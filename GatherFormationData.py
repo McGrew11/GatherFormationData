@@ -46,7 +46,21 @@ def writeToCsv(myList):
 def markFormation(formation):
     global a
     global b
+
     if (len(b) == 10):
+
+        print('Generate 10 samples based on given formation and variance')
+        variance = 2
+        newPoints = []
+
+        for point in b:
+            singleSet = []
+            for i in range(0,10):
+                singleSet.append([point[0] + np.random.uniform(-2, 2), point[1] + np.random.uniform(-2,2)])
+                if(len(singleSet) == 10):
+                    singleSet.append([formation])
+                    a.append(singleSet)
+
         a.append(b)
         a[len(a) - 1].append([formation])
         print('Formation ', formation, ' added \n', a)
