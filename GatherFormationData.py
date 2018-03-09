@@ -13,17 +13,19 @@ import csv
 
 #Draws soccer pitch based on a matplot grid
 def drawPitch():
-    circle = plt.Circle((0.0, 0.0), 9.15, color='white', fill=False)
-    ax.add_artist(circle)
+    #circle = plt.Circle((0.0, 0.0), 9.15, color='white', fill=False)
+    #ax.add_artist(circle)
     ax.axis([-55, 55, -35, 35])
     ax.grid()
-    ax.set_facecolor('green')
-    plt.axvline(x=0, color='white')
-    plt.axvline(x=-52, color='white')
-    plt.axvline(x=52, color='white')
-    plt.axhline(y=34, color='white')
-    plt.axhline(y=-34, color='white')
-    plt.plot(0,0, 'o', color='white')
+    #ax.set_facecolor('green')
+    #plt.axvline(x=0, color='white')
+    #plt.axvline(x=-52, color='white')
+    #plt.axvline(x=52, color='white')
+    #plt.axhline(y=34, color='white')
+    #plt.axhline(y=-34, color='white')
+    #plt.plot(0,0, 'o', color='white')
+    im = plt.imread('field.png')
+    ax.imshow(im, extent=[-55, 55, -35, 35], aspect='auto')
 
 #Writes list a to data.csv file
 def writeToCsv(myList):
@@ -60,6 +62,7 @@ def clear():
 
 #Draw soccer pitch
 fig = plt.figure(figsize=(10,6))
+fig.suptitle('Formation Data Generation', size='16')
 ax = fig.add_subplot(111)
 
 #Draw the pitch
