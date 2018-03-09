@@ -50,13 +50,13 @@ def markFormation(formation):
     if (len(b) == 10):
 
         print('Generate 10 samples based on given formation and variance')
-        variance = 2
         newPoints = []
+        variance = 2
 
         for point in b:
             singleSet = []
             for i in range(0,10):
-                singleSet.append([point[0] + np.random.uniform(-2, 2), point[1] + np.random.uniform(-2,2)])
+                singleSet.append([point[0] + np.random.uniform(variance*-1, variance), point[1] + np.random.uniform(variance*-1,variance)])
                 if(len(singleSet) == 10):
                     singleSet.append([formation])
                     a.append(singleSet)
