@@ -10,7 +10,6 @@ import csv
 
 ##########################################################
 
-
 #Draws soccer pitch based on a matplot grid
 def drawPitch():
     #circle = plt.Circle((0.0, 0.0), 9.15, color='white', fill=False)
@@ -50,7 +49,6 @@ def markFormation(formation):
     if (len(b) == 10):
 
         print('Generate 10 samples based on given formation and variance')
-        newPoints = []
         variance = 2
 
         for point in b:
@@ -58,6 +56,7 @@ def markFormation(formation):
             for i in range(0,10):
                 singleSet.append([point[0] + np.random.uniform(variance*-1, variance), point[1] + np.random.uniform(variance*-1,variance)])
                 if(len(singleSet) == 10):
+                    print('New datapoint: ', singleSet)
                     singleSet.append([formation])
                     a.append(singleSet)
 
