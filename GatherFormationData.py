@@ -59,7 +59,7 @@ def markFormation(formation):
         a[len(a) - 1].append([formation])
         print('Formation ', formation, ' added \n', a)
 
-        print('Generate 10 samples based on given formation and variance')
+        print('Generate 10 samples based on given formation and variance...')
 
         singleSet = []
         variance = 3 #Variance in meters
@@ -85,9 +85,13 @@ def clear():
     drawPitch()
 
 #Draw soccer pitch
-fig = plt.figure(figsize=(10,6))
-fig.suptitle('Formation Data Generation\n Press 1 for 5-3-2\n Press 2 for 4-3-3', size='10')
+fig = plt.figure(figsize=(11,7))
+fig.suptitle('Formation Data Generation', fontsize=14)
 ax = fig.add_subplot(111)
+plt.gcf().text(0.315, 0.90, 'Place 10 players on the pitch for the intended formation', fontsize=10)
+plt.gcf().text(0.3, 0.04, 'Commands: \n *ESC: Reset current formation\n *Delete: Delete last entered formation \n *F1: List all entered formations\n *4: Save formations to csv file', fontsize=10)
+plt.gcf().text(0.6, 0.06, 'Formations: \n *1: 5-3-2\n *2: 4-2-2 \n *3: 4-2-4', fontsize=10)
+plt.subplots_adjust(bottom=0.2)
 
 #Draw the pitch
 drawPitch()
