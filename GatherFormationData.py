@@ -2,14 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import csv
 
-
-########################## TODO #########################
-
-#convert list to numpy array and use numpy.savetxt()
-# for better saving functionality
-
-##########################################################
-
 #Draws soccer pitch based on a matplot grid
 def drawPitch():
     #circle = plt.Circle((0.0, 0.0), 9.15, color='white', fill=False)
@@ -43,6 +35,19 @@ def writeToCsv(myList):
     else:
         print('Please specify 10 players and the formation first')
 
+def deleteLastFormation():
+    del a[-11:]
+    print('Last defined formation + generated formations were deleted (11 rows) ...')
+
+def printAll():
+    print('Printing all entered formations...')
+    for i in range(0, len(a)):
+        print('#'+str(i+1)+ ': ' + str(a[i]))
+
+def mirrorPoint(point):
+    point = [point[0]*-1, point[1]]
+    return point
+
 #Adds given formation (10 player coordinates + formation label) to the player positions
 def markFormation(formation):
     global a
@@ -55,10 +60,10 @@ def markFormation(formation):
         print('Formation ', formation, ' added \n', a)
 
         print('Generate 10 samples based on given formation and variance')
-        variance = 3
-        singleSet = []
-        numberOfRandomDatapoints = 10
 
+        singleSet = []
+        variance = 3 #Variance in meters
+        numberOfRandomDatapoints = 10 # Number of datapoints to be generated with given variance
 
         for counter in range(0,numberOfRandomDatapoints):
             for i in range(0,10):
@@ -81,7 +86,7 @@ def clear():
 
 #Draw soccer pitch
 fig = plt.figure(figsize=(10,6))
-fig.suptitle('Formation Data Generation', size='16')
+fig.suptitle('Formation Data Generation\n Press 1 for 5-3-2\n Press 2 for 4-3-3', size='10')
 ax = fig.add_subplot(111)
 
 #Draw the pitch
@@ -112,6 +117,8 @@ def on_key(event):
     global a
     global b
 
+    #print('key: ', event.key)
+
     if(event.key == '1' or event.key == '2' or event.key == '3'):
         markFormation(float(event.key))
 
@@ -121,6 +128,12 @@ def on_key(event):
     elif (event.key == 'escape'):
         b=[]
         clear()
+
+    elif (event.key == 'delete'):
+        deleteLastFormation()
+
+    elif (event.key == 'f1'):
+        printAll()
 
 cid = fig.canvas.mpl_connect('button_press_event', onclick)
 cid = fig.canvas.mpl_connect('key_press_event', on_key)
