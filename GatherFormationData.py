@@ -86,11 +86,12 @@ def clear():
 
 #Draw soccer pitch
 fig = plt.figure(figsize=(11,7))
+fig.canvas.set_window_title('GatherMatchData')
 fig.suptitle('Formation Data Generation', fontsize=14)
 ax = fig.add_subplot(111)
 plt.gcf().text(0.315, 0.90, 'Place 10 players on the pitch for the intended formation', fontsize=10)
-plt.gcf().text(0.3, 0.04, 'Commands: \n *ESC: Reset current formation\n *Delete: Delete last entered formation \n *F1: List all entered formations\n *4: Save formations to csv file', fontsize=10)
-plt.gcf().text(0.6, 0.06, 'Formations: \n *1: 5-3-2\n *2: 4-2-2 \n *3: 4-2-4', fontsize=10)
+plt.gcf().text(0.3, 0.04, 'Commands: \n * ESC: Reset current formation\n * Delete: Delete last entered formation \n * F1: List all entered formations\n * 4: Save formations to csv file', fontsize=10)
+plt.gcf().text(0.6, 0.06, 'Formations: \n * 1: 5-3-2\n * 2: 4-2-2 \n * 3: 4-2-4', fontsize=10)
 plt.subplots_adjust(bottom=0.2)
 
 #Draw the pitch
