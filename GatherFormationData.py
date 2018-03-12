@@ -15,7 +15,7 @@ def drawPitch():
     #circle = plt.Circle((0.0, 0.0), 9.15, color='white', fill=False)
     #ax.add_artist(circle)
     ax.axis([-55, 55, -35, 35])
-    ax.grid()
+    #ax.grid()
     #ax.set_facecolor('green')
     #plt.axvline(x=0, color='white')
     #plt.axvline(x=-52, color='white')
@@ -35,6 +35,8 @@ def writeToCsv(myList):
 
     elif(len(a[len(a)-1])==11):
         print('Writing data to csv file..')
+
+        #np.savetxt('test.out', a, fmt='%.5f')
         with open('./data.csv', 'w') as myFile:
             wr = csv.writer(myFile, quoting=csv.QUOTE_ALL)
             wr.writerow(myList)
@@ -55,8 +57,10 @@ def markFormation(formation):
         print('Generate 10 samples based on given formation and variance')
         variance = 3
         singleSet = []
+        numberOfRandomDatapoints = 10
 
-        for counter in range(0,10):
+
+        for counter in range(0,numberOfRandomDatapoints):
             for i in range(0,10):
                 singleSet.append([round(b[i][0] + np.random.uniform(variance*-1, variance),2), round(b[i][1] + np.random.uniform(variance*-1,variance),2)])
                 if(len(singleSet) == 10):
