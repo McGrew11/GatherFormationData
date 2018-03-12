@@ -48,21 +48,23 @@ def markFormation(formation):
 
     if (len(b) == 10):
 
-        print('Generate 10 samples based on given formation and variance')
-        variance = 2
-
-        for point in b:
-            singleSet = []
-            for i in range(0,10):
-                singleSet.append([point[0] + np.random.uniform(variance*-1, variance), point[1] + np.random.uniform(variance*-1,variance)])
-                if(len(singleSet) == 10):
-                    print('New datapoint: ', singleSet)
-                    singleSet.append([formation])
-                    a.append(singleSet)
-
         a.append(b)
         a[len(a) - 1].append([formation])
         print('Formation ', formation, ' added \n', a)
+
+        print('Generate 10 samples based on given formation and variance')
+        variance = 3
+        singleSet = []
+
+        for counter in range(0,10):
+            for i in range(0,10):
+                singleSet.append([round(b[i][0] + np.random.uniform(variance*-1, variance),2), round(b[i][1] + np.random.uniform(variance*-1,variance),2)])
+                if(len(singleSet) == 10):
+                    singleSet.append([formation])
+                    print('New datapoint: ', singleSet)
+                    a.append(singleSet)
+                    singleSet = []
+
         b = []
         clear()
     else:
